@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #333333;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+}
+
+@layer components {
+  /* Custom styles for hero search bar dropdowns */
+  select.bg-primary {
+    color: white;
+  }
+  
+  select.bg-primary option {
+    background-color: #D6212A;
+    color: white;
+  }
+  
+  select.bg-primary:focus {
+    background-color: #D6212A;
+    color: white;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but keep scroll functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+
+  /* Subtle futuristic card glow */
+  .futuristic-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 12px;
+    background: linear-gradient(120deg, rgba(214, 33, 42, 0.45), rgba(15, 69, 112, 0.45), rgba(214, 33, 42, 0.45));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+  }
+  .futuristic-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.25), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+  .futuristic-card:hover::before,
+  .futuristic-card:hover::after {
+    opacity: 1;
+  }
+  .futuristic-card > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .destinations-scroll {
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Admin panel – form and card polish */
+  .admin-input:focus {
+    @apply ring-2 ring-secondary/30 border-secondary/50;
+  }
+  .admin-card {
+    @apply bg-white rounded-xl border border-gray-200/80 shadow-sm;
+  }
+  .admin-section-title {
+    @apply text-sm font-semibold text-gray-800 tracking-tight;
+  }
+}

@@ -27,7 +27,8 @@ app.use(helmet({
   },
   crossOriginEmbedderPolicy: false,
 }));
-app.use(cors());
+const corsOrigin = process.env.CORS_ORIGIN;
+app.use(cors(corsOrigin ? { origin: corsOrigin.split(',').map((o) => o.trim()) } : {}));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 

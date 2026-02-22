@@ -1,0 +1,17 @@
+# Render Blueprint – backend API only.
+# Deploy frontend separately (e.g. Vercel) and set REACT_APP_API_URL to this service URL + /api.
+services:
+  - type: web
+    name: edu-bridge-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      # Optional: restrict CORS to your frontend (comma-separated origins). Leave unset to allow all.
+      # - key: CORS_ORIGIN
+      #   sync: false
